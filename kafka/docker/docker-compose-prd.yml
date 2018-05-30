@@ -1,0 +1,23 @@
+version: '2'
+services:
+    alice-kafka-teste:
+        image: cowpanda/node-pm2:8
+        container_name: alice-kafka-teste
+        working_dir: /app
+        network_mode: bridge
+        restart: always
+        mem_limit: 4g
+        logging:
+          driver: 'json-file'
+          options:
+            max-size: 50m
+            max-file: '3'
+        ports:
+            - '6051:6051'
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ../:/app
+        environment:
+            - NODE_ENV=prd
+            - PORT=6051
+            - APP=app.js --node-args="--max-old-space-size=4096" # node process limit memory

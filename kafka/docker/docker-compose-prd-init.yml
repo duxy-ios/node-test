@@ -1,0 +1,21 @@
+version: '2' # 用于初始化一些资源的配置
+services:
+    alice-kafka-teste:
+        image: cowpanda/node-pm2:8
+        container_name: alice-kafka-teste
+        working_dir: /app
+        network_mode: bridge
+#        restart: no
+        mem_limit: 1g
+        logging:
+          driver: 'json-file'
+          options:
+            max-size: 50m
+            max-file: '3'
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ../:/app
+        environment:
+            - NODE_ENV=prd
+            - INIT=true
+            - APP=app.js

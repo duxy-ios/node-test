@@ -1,0 +1,20 @@
+version: '2'
+services:
+    antuo-alice-kafka-teste:
+        image: cowpanda/node-pm2:8
+        container_name: antuo-alice-kafka-teste
+        working_dir: /app
+        network_mode: bridge
+        mem_limit: 1500m
+        logging:
+          driver: json-file
+          options:
+            max-size: 50m
+        ports:
+            - '6051:6051'
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ../:/app
+        environment:
+            - NODE_ENV=test
+            - APP=app.js

@@ -1,0 +1,18 @@
+version: '2'
+services:
+    antuo-alice-core-mongo:
+        image: mongo:latest
+        container_name: antuo-alice-core-mongo
+        working_dir: /data/db
+        restart: always
+        logging:
+            driver: "json-file" # limit logs retained on host to 25MB
+            options:
+               max-size: "500k"
+               max-file: "50"
+        network_mode: bridge
+        ports:
+            - '5181:27017'
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /data/alice-core-mongo:/data/db:rw
