@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker exec -it alice-kafka-teste pm2 restart app
+docker exec -it alice-kafka-test pm2 restart app
