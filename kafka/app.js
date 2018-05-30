@@ -6,7 +6,7 @@ var Consumer = kafka.Consumer;
 var Offset = kafka.Offset;
 var topic = 'test';
 // const client = new kafka.KafkaClient({ kafkaHost: '119.27.189.162:29092' });
-const client = new kafka.KafkaClient({ kafkaHost: '127.0.0.1:29092' });
+const client = new kafka.KafkaClient({ kafkaHost: '172.27.32.4:9092' });
 var topics = [{ topic: topic, partition: 0, offset: 189 }]; //offset:2
 //fromOffset If set true, consumer will fetch message from the given offset in the payloads
 
